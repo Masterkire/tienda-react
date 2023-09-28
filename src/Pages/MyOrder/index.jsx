@@ -8,11 +8,14 @@ import OrderCard from "../../Components/OrderCard"
 
 function MyOrder() {
   const context = useContext(ShoppingCartContext)
+  const currentPath = window.location.pathname
+  let index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
+  if (index === 'last') index = context.order?.length -1
 
     return (
       <>
         <Layout>
-        <div className='flex relative items-center justify-center w-80 mb-6'>
+          <div className='flex relative items-center justify-center w-80 mb-6'>
             <Link to={'/my-orders'} className='absolute left-0'>
               <ChevronLeftIcon className='h-6 w-6 text-black text-sm cursor-pointer'/>
             </Link>
@@ -20,7 +23,7 @@ function MyOrder() {
           </div>
           <div className='flex flex-col w-80'>
                 {
-                  context.order?.slice(-1)[0].products.map(product => (
+                  context.order?.[index]?.products.map(product => (
                       <OrderCard 
                           key={product.id}
                           id={product.id}
@@ -30,7 +33,7 @@ function MyOrder() {
                       />
                   ))
                 }
-            </div>
+          </div>
         </Layout>
       </>
     )

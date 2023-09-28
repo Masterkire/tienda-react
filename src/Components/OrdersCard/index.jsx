@@ -5,12 +5,10 @@ const OrdersCard = props => {
     const { totalPrice, totalProducts} = props
 
     return ( 
-        <div className="flex justify-between items-center mb-3 border border-black">
-            <p>
-                <span>01.02.23</span>
-                <span>{totalProducts}</span>
-                <span>{totalPrice}</span>
-            </p>
+        <div className="flex flex-col justify-center items-start mb-4 p-4 border rounded-lg  bg-black-500 shadow-lg shadow-black-500/50 border-gray-500 w-60">
+            <p className='flex justify-between font-semibold w-full'>Fecha: <span className='font-light '>01.02.23</span></p>
+            <p className='flex justify-between font-semibold w-full'>Articulos: <span className='font-light'>{totalProducts}</span></p>
+            <p className='flex justify-between font-semibold w-full'>Precio total: <span className='font-medium'>${totalPrice}</span></p>
         </div>
      );
 }
