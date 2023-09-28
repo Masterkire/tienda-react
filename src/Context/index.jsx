@@ -27,7 +27,6 @@ export const ShoppingCartProvider = ({children}) => {
 
     // Get products
     const [items, setItems] = useState(null)
-    // console.log(items[1].title);
     const [filteredItems, setFilteredItems] = useState(null)
 
     // Get products by titles
@@ -48,8 +47,6 @@ export const ShoppingCartProvider = ({children}) => {
         if (searchByTitle) setFilteredItems(filteredItemsByTitle(items, searchByTitle))
       }, [items, searchByTitle])
 
-      console.log('filteredItems: ',filteredItems);
-
     return (
         <ShoppingCartContext.Provider value={{
             count,
@@ -69,7 +66,8 @@ export const ShoppingCartProvider = ({children}) => {
             items,
             setItems,
             searchByTitle,
-            setSearchByTitle
+            setSearchByTitle,
+            filteredItems
         }}>
             {children}
         </ShoppingCartContext.Provider>
